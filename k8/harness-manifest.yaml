@@ -1,0 +1,33 @@
+# Deployment and Service Manifest for Harness CV App Example
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sid-harness-java-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sid-harness-java
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sid-harness-java
+    spec:
+      containers:
+        - name: sid-harness-java
+          image: {{.Values.image}}
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sid-harness-java-service
+spec:
+  selector:
+    app: sid-harness-java
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
