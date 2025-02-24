@@ -3,6 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '3.4.3'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'gg.jte.gradle' version '3.1.12'
+	id 'com.google.cloud.tools.jib' version '3.4.4'
 }
 
 group = 'com.sid'
@@ -37,6 +38,16 @@ dependencies {
 jte {
 	generate()
 	binaryStaticContent = true
+}
+bootJar {
+	archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+
+jib {
+	to {
+		image = 'harness.jfrog.io/artifactory/artifactory-repo/sid-harness-java'
+		allowInsecureRegistries = true
+	}
 }
 
 tasks.named('test') {
