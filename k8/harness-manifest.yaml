@@ -24,6 +24,9 @@ spec:
           image: {{.Values.image}}
           ports:
             - containerPort: 8080
+          env:
+            - name: version
+              value: <+pipeline.variables.version>
 ---
 apiVersion: v1
 kind: Service
