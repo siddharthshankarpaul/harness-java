@@ -1,1 +1,2 @@
 image: <+artifact.image>
+version: <+pipeline.variables.version>
