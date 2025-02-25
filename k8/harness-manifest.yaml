@@ -1,5 +1,5 @@
 # Deployment and Service Manifest for Harness CV App Example
-apiVersion: apps/v1
+apiVersion: v1
 kind: Namespace
 metadata:
   name: java
