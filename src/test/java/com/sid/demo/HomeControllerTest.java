@@ -1,5 +1,6 @@
 package com.sid.demo;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class HomeControllerTest {
     void testHome() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void failAlways(){
+        Assertions.fail("this must fail");
     }
 }
