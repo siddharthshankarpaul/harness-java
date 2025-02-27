@@ -14,4 +14,10 @@ public class HomeController {
         model.addAttribute("version", appVersion);
         return "index";
     }
+    @GetMapping("/status")
+    public String home() {
+        return "ok";
+    }
+
+
 }
