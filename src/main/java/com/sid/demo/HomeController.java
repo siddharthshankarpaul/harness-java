@@ -14,8 +14,10 @@ public class HomeController {
         model.addAttribute("version", appVersion);
         return "index";
     }
+
     @GetMapping("/status")
     public String home() {
+        System.out.println("in status");
         return "ok";
     }
 
